@@ -138,14 +138,14 @@ input {
   background: white;
 }
 
-.erro.open {
+.error.open {
   opacity: 1;
   visibility: visible;
 
   transform: translateY(0);
 }
 
-.erro {
+.error {
   position: absolute;
   top: 0;
   left: 0;

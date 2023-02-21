@@ -1,38 +1,54 @@
 const form = document.querySelector('.calculator')
-let closeBtn = document.getElementById('closeBtn')
-let inputWeigth = document.getElementById('weight')
-let inputHeigth = document.getElementById('height')
-let button = document.getElementById('button')
-let result = document.getElementById('result')
-let modal = document.querySelector('.modal')
+const error = document.querySelector('.error')
+let inputWeight = document.getElementById('weight')
+let inputHeight = document.getElementById('height')
+
+//object literls
+const Modal = {
+  closeBtn: document.getElementById('closeBtn'),
+  imcButton: document.getElementById('button'),
+  result: document.getElementById('result'),
+  modalContent: document.querySelector('.modal'),
+
+  //metodo de função dentro de objeto podendo ser usado da seguinte forma posteriormente "Modal.open()..."
+  open() {
+    Modal.modalContent.classList.add('open')
+  }
+}
 
 form.onsubmit = event => {
   event.preventDefault()
 
-  let weigth = inputWeigth.value
-  let heigth = inputHeigth.value
+  let weight = inputWeight.value
+  let height = inputHeight.value
 
-  let inner = calcIMC(weigth, heigth)
+  let inner = calcIMC(weight, height)
 
   result.innerText = `Seu IMC é ${inner}`
 
-  modal.classList.add('open')
+  Modal.modalContent.classList.add('open')
 
-  modalToggle()
+  modalSwitch()
+  inputValidate(weight, height)
 }
 
-function modalToggle() {
-  button.addEventListener('click', e => {
-    modal.classList.toggle('open')
-    console.log('colocou')
+function modalSwitch() {
+  Modal.imcButton.addEventListener('click', e => {
+    Modal.modalContent.classList.toggle('open')
   })
 
-  closeBtn.addEventListener('click', e => {
-    modal.classList.remove('open')
-    console.log('tirou')
+  Modal.closeBtn.addEventListener('click', e => {
+    Modal.modalContent.classList.remove('open')
+    error.classList.remove('open')
   })
 }
 
-function calcIMC(weight, heigth) {
-  return (weight / (heigth / 100) ** 2).toFixed(2)
+function calcIMC(weight, height) {
+  return (weight / (height / 100) ** 2).toFixed(2)
+}
+
+function inputValidate(weight, height) {
+  if (isNaN(weight) || isNaN(height)) {
+    error.classList.toggle('open')
+  }
 }
