@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de IMC</title>
+    <script src="https://unpkg.com/phosphor-icons"></script>
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/4428/4428027.png"
+      type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form class="calculator">
+        <h1>Cáculo de IMC</h1>
+        <div>
+          <label for="weight">Peso (Kg)</label>
+          <input type="number" id="weight" placeholder="ex: 70" />
+        </div>
+        <div>
+          <label for="height">Altura (cm)</label>
+          <input type="number" id="height" placeholder="ex: 170" />
+        </div>
+        <button id="button" type="submit">
+          Calcular IMC <i class="ph-arrow-right"></i>
+        </button>
+      </form>
+
+      <div class="modal">
+        <div>
+          <button id="closeBtn"><i class="ph-x-circle"></i></button>
+          <h2 id="result">Seu IMC é 00</h2>
+        </div>
+      </div>
+
+      <div class="erro">
+        <p>Digite somente nímeros</p>
+      </div>
+    </div>
+  </body>
+</html>
