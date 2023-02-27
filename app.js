@@ -1,7 +1,7 @@
 import { Modal } from './assets/js modules/modal.js'
+import { Error } from './assets/js modules/alert-error.js'
 
 const form = document.querySelector('.calculator')
-const error = document.querySelector('.error')
 let inputWeight = document.getElementById('weight')
 let inputHeight = document.getElementById('height')
 
@@ -16,7 +16,7 @@ form.onsubmit = event => {
   Modal.result.innerText = `Seu IMC é ${inner}`
 
   inputValidate(weight, height)
-  // Modal.open()
+  // Error.close()
 }
 
 function calcIMC(weight, height) {
@@ -26,8 +26,9 @@ function calcIMC(weight, height) {
 //input Validation
 function inputValidate(weight, height) {
   if (isNaN(weight) || isNaN(height)) {
-    error.classList.toggle('open')
+    Error.open()
   } else {
     Modal.open()
+    Error.close()
   }
 }
